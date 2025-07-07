@@ -6,7 +6,7 @@ class Kitap
     private string YayinEvi { get; set; }
     private int SayfaSayisi { get; set; }
     private bool Durum { get; set; }
-    private void Kitap(int _Id, string _KitapAdi, string _Yazar, string _YayinEvi, int _SayfaSayisi)
+    public Kitap(int _Id, string _KitapAdi, string _Yazar, string _YayinEvi, int _SayfaSayisi)
     {
         Id = _Id;
         KitapAdi = _KitapAdi;
@@ -14,11 +14,25 @@ class Kitap
         YayinEvi = _YayinEvi;
         SayfaSayisi = _SayfaSayisi;
         Durum = true;
-     }
-
+    }
+    public virtual void Add()
+    {
+        Console.WriteLine("Yeni kitap eklendi!");
+    }
 }
 
-class Roman : Kitap
+class Roman(int _Id, string _KitapAdi, string _Yazar, string _YayinEvi, int _SayfaSayisi) : Kitap(_Id, _KitapAdi, _Yazar, _YayinEvi, _SayfaSayisi)
 {
-    
+    public override void Add()
+    {
+        Console.WriteLine("Yeni roman eklendi!");
+    }
+}
+
+class CocukKitabi(int _Id, string _KitapAdi, string _Yazar, string _YayinEvi, int _SayfaSayisi) : Kitap(_Id, _KitapAdi, _Yazar, _YayinEvi, _SayfaSayisi)
+{
+    public override void Add()
+    {
+        Console.WriteLine("Yeni cocuk kitabi eklendi!");
+    }
 }
