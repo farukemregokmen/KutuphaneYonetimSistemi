@@ -36,3 +36,11 @@ class CocukKitabi(int _Id, string _KitapAdi, string _Yazar, string _YayinEvi, in
         Console.WriteLine("Yeni cocuk kitabi eklendi!");
     }
 }
+
+class Ansiklopedi(int _Id, string _KitapAdi, string _Yazar, string _YayinEvi, int _SayfaSayisi) : Kitap(_Id, _KitapAdi, _Yazar, _YayinEvi, _SayfaSayisi)
+{
+        public override void Add()
+    {
+        Console.WriteLine("Yeni ansiklopedi eklendi!");
+    }
+ }
