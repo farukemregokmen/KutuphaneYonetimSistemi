@@ -44,3 +44,11 @@ class Ansiklopedi(int _Id, string _KitapAdi, string _Yazar, string _YayinEvi, in
         Console.WriteLine("Yeni ansiklopedi eklendi!");
     }
  }
+
+// Interface
+
+interface IKiralama
+{
+    void KitapKirala();
+    void KitapIadeEt();
+}
