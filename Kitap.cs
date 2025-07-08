@@ -1,5 +1,6 @@
-class Kitap
+abstract class Kitap
 {
+    private static int KitapList = 0;
     private int Id { get; set; }
     private string KitapAdi { get; set; }
     private string Yazar { get; set; }
@@ -14,10 +15,11 @@ class Kitap
         YayinEvi = _YayinEvi;
         SayfaSayisi = _SayfaSayisi;
         Durum = true;
+        KitapList++;
     }
-    public virtual void Add()
-    {
-        Console.WriteLine("Yeni kitap eklendi!");
+    public abstract void Add();
+    public void KitapListele() {
+        Console.WriteLine($"ID: {Id}\nKitap Adi: {KitapAdi}\nYazar: {Yazar}\nYayin Evi: {YayinEvi}\nSayfa Sayisi: {SayfaSayisi}\nDurum: {(Durum ? "Mevcut" : "Kiralanmis")}");
     }
 }
 
