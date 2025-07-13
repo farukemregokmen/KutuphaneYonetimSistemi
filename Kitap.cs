@@ -1,7 +1,22 @@
-abstract class Kitap
+// Interface
+
+interface IKiralama
 {
+    void KitapKirala(int id);
+    void KitapIadeEt();
+}
+
+abstract class Kitap : IKiralama
+{
+
     private static int KitapList = 0;
-    private int Id { get; set; }
+
+    private int Id;
+    public int id
+    {
+        get { return Id; }
+        private set;
+    }
     private string KitapAdi { get; set; }
     private string Yazar { get; set; }
     private string YayinEvi { get; set; }
@@ -16,6 +31,24 @@ abstract class Kitap
         SayfaSayisi = _SayfaSayisi;
         Durum = true;
         KitapList++;
+    }
+
+    public virtual void KitapKirala(int _Id)
+    {
+        if (Durum)
+        {
+            Durum = false;
+            Console.WriteLine($"{KitapAdi} kitabý kiralandý.");
+        }
+        else
+        {
+            Console.WriteLine($"{KitapAdi} kitabý zaten kiralanmýþ.");
+        }
+    }
+    public void KitapIadeEt()
+    {
+        Durum = true;
+        Console.WriteLine($"{KitapAdi} kitabý iade edildi.");
     }
     public abstract void Add();
     public void KitapListele() {
@@ -47,10 +80,3 @@ class Ansiklopedi(int _Id, string _KitapAdi, string _Yazar, string _YayinEvi, in
     }
  }
 
-// Interface
-
-interface IKiralama
-{
-    void KitapKirala();
-    void KitapIadeEt();
-}

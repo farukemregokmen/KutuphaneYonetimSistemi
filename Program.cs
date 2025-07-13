@@ -129,5 +129,52 @@ while (true)
             Console.ReadLine();
             Console.Clear();
             break;
+        case "3":
+            // Kitap kiralama
+            Console.Write("Kiralamak istediginiz kitabın ID'sini girin: ");
+            int kiralamaId = Convert.ToInt32(Console.ReadLine());
+            bool found = false;
+            foreach (var roman in romanList)
+            {
+                if (roman.id == kiralamaId)
+                {
+                    roman.KitapKirala(kiralamaId);
+                    found = true;
+                    break;
+                }
+            }
+            if (!found)
+            {
+                foreach (var cocukKitabi in cocukKitabiList)
+                {
+                    if (cocukKitabi.id == kiralamaId)
+                    {
+                        cocukKitabi.KitapKirala(kiralamaId);
+                        found = true;
+                        break;
+                    }
+                }
+            }
+            if (!found)
+            {
+                foreach (var ansiklopedi in ansiklopediList)
+                {
+                    if (ansiklopedi.id == kiralamaId)
+                    {
+                        ansiklopedi.KitapKirala(kiralamaId);
+                        found = true;
+                        break;
+                    }
+                }
+            }
+            if (!found)
+            {
+                Console.WriteLine("Bu ID'ye sahip bir kitap bulunamadi.");
+            }
+            Console.Clear();
+            break;
+        default:
+            Console.WriteLine("Gecersiz islem. Lutfen tekrar deneyin.");
+            break;
     }
 }
