@@ -52,6 +52,26 @@ while (true)
                         Console.WriteLine(ex.Message);
                     }
                     break;
+                case 2:
+                    try
+                    {
+                        cocukKitabiList.Add(new CocukKitabi(id, kitapAdi!, yazar!, yayinEvi!, sayfaSayisi));
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                    break;
+                case 3:
+                    try
+                    {
+                        ansiklopediList.Add(new Ansiklopedi(id, kitapAdi!, yazar!, yayinEvi!, sayfaSayisi));
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                    break;
                 default:
                     Console.WriteLine("Gecersiz kitap turu secildi.");
                     break;
@@ -63,16 +83,51 @@ while (true)
             Console.WriteLine("Kitaplar listelenecek...\n");
             if (romanList.Count == 0)
             {
-                Console.WriteLine("Liste bos.");
+                Console.WriteLine("Roman listesi bos.");
             }
             else
             {
+                Console.WriteLine("-----------------------------\n");
+                Console.WriteLine("ROMANLAR\n");
+                Console.WriteLine("-----------------------------\n");
                 foreach (var roman in romanList)
                 {
                     roman.KitapListele();
                     Console.WriteLine("-----------------------------");
                 }
             }
+            if (cocukKitabiList.Count == 0)
+            {
+                Console.WriteLine("Cocuk kitabi listesi bos.");
+            }
+            else
+            {
+                Console.WriteLine("-----------------------------\n");
+                Console.WriteLine("COCUK KITAPLARI\n");
+                Console.WriteLine("-----------------------------\n");
+                foreach (var cocukKitabi in cocukKitabiList)
+                {
+                    cocukKitabi.KitapListele();
+                    Console.WriteLine("-----------------------------");
+                }
+            }
+            if (ansiklopediList.Count == 0)
+            {
+                Console.WriteLine("Ansiklopedi listesi bos.");
+            }
+            else
+            {
+                Console.WriteLine("-----------------------------\n");
+                Console.WriteLine("ANSIKLOPEDILER\n");
+                Console.WriteLine("-----------------------------\n");
+                foreach (var ansiklopedi in ansiklopediList)
+                {
+                    ansiklopedi.KitapListele();
+                    Console.WriteLine("-----------------------------");
+                }
+            }
+            Console.ReadLine();
+            Console.Clear();
             break;
     }
 }
