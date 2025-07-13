@@ -10,7 +10,9 @@ List<Ansiklopedi> ansiklopediList = new List<Ansiklopedi>();
 
 while (true)
 {
-
+    //Variables
+    int id, sayfaSayisi;
+    string? kitapAdi, yazar, yayinEvi;
     //Console menu
     Console.WriteLine("\t\tKutuphane Yonetim Sistemi\n\n");
     Console.WriteLine("1. Kitap Ekle");
@@ -23,17 +25,25 @@ while (true)
     switch (islem)
     {
         case "1":
-            Console.Write("Kitap idsi: ");
-            int id = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Kitap adi: ");
-            string? kitapAdi = Console.ReadLine();
-            Console.Write("Yazar adi: ");
-            string? yazar = Console.ReadLine();
-            Console.Write("Yayin evi: ");
-            string? yayinEvi = Console.ReadLine();
-            Console.Write("Sayfa sayisi: ");
-            int sayfaSayisi = Convert.ToInt32(Console.ReadLine());
-            Console.Clear();
+            try {
+                Console.Write("Kitap idsi: ");
+                id = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Kitap adi: ");
+                kitapAdi = Console.ReadLine();
+                Console.Write("Yazar adi: ");
+                yazar = Console.ReadLine();
+                Console.Write("Yayin evi: ");
+                yayinEvi = Console.ReadLine();
+                Console.Write("Sayfa sayisi: ");
+                sayfaSayisi = Convert.ToInt32(Console.ReadLine());
+                Console.Clear();
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine("Gecersiz veri girisi: " + ex.Message);
+                break;
+            }
+
             // Kitap tur secimi
             Console.WriteLine("1. Roman");
             Console.WriteLine("2. Cocuk Kitabi");

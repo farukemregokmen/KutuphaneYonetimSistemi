@@ -39,10 +39,14 @@ abstract class Kitap : IKiralama
         {
             Durum = false;
             Console.WriteLine($"{KitapAdi} kitabý kiralandý.");
+            Console.ReadLine();
+            Console.Clear();
         }
         else
         {
             Console.WriteLine($"{KitapAdi} kitabý zaten kiralanmýþ.");
+            Console.ReadLine();
+            Console.Clear();
         }
     }
     public void KitapIadeEt()
