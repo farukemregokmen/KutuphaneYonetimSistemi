@@ -183,6 +183,50 @@ while (true)
             }
             Console.Clear();
             break;
+        case "4":
+            // Kitap iade etme
+            Console.Write("Iade etmek istediginiz kitabın ID'sini girin: ");
+            int iadeId = Convert.ToInt32(Console.ReadLine());
+            found = false;
+            foreach (var roman in romanList)
+            {
+                if (roman.id == iadeId)
+                {
+                    roman.KitapIadeEt();
+                    found = true;
+                    break;
+                }
+            }
+            if (!found)
+            {
+                foreach (var cocukKitabi in cocukKitabiList)
+                {
+                    if (cocukKitabi.id == iadeId)
+                    {
+                        cocukKitabi.KitapIadeEt();
+                        found = true;
+                        break;
+                    }
+                }
+            }
+            if (!found)
+            {
+                foreach (var ansiklopedi in ansiklopediList)
+                {
+                    if (ansiklopedi.id == iadeId)
+                    {
+                        ansiklopedi.KitapIadeEt();
+                        found = true;
+                        break;
+                    }
+                }
+            }
+            if (!found)
+            {
+                Console.WriteLine("Bu ID'ye sahip bir kitap bulunamadi.");
+            }
+            Console.Clear();
+            break;
         default:
             Console.WriteLine("Gecersiz islem. Lutfen tekrar deneyin.");
             break;
