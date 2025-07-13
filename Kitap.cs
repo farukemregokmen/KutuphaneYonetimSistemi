@@ -53,6 +53,8 @@ abstract class Kitap : IKiralama
     {
         Durum = true;
         Console.WriteLine($"{KitapAdi} kitabý iade edildi.");
+        Console.ReadLine();
+        Console.Clear();
     }
     public abstract void Add();
     public void KitapListele() {

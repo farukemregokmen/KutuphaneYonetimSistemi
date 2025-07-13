@@ -4,9 +4,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-List<Roman> romanList = new List<Roman>();
+var romanList = new List<Kitap>();
 List<CocukKitabi> cocukKitabiList = new List<CocukKitabi>();
 List<Ansiklopedi> ansiklopediList = new List<Ansiklopedi>();
+
+static bool kitapKontrol(int id, List<Kitap> myList)
+{
+    foreach (var item in myList)
+    {
+        if (item.id == id)
+        {
+            return true; // Kitap zaten mevcut
+        }
+    }
+    return false; // Kitap mevcut değil
+}
 
 while (true)
 {
@@ -55,7 +67,15 @@ while (true)
                 case 1:
                     try
                     {
+                        if (kitapKontrol(id, romanList))
+                        {
+                            Console.WriteLine("Bu ID'ye sahip bir kitap zaten mevcut.");
+                            Console.ReadLine();
+                            Console.Clear();
+                            break;
+                        }
                         romanList.Add(new Roman(id, kitapAdi!, yazar!, yayinEvi!, sayfaSayisi));
+                        break;
                     }
                     catch (Exception ex)
                     {
@@ -65,7 +85,17 @@ while (true)
                 case 2:
                     try
                     {
-                        cocukKitabiList.Add(new CocukKitabi(id, kitapAdi!, yazar!, yayinEvi!, sayfaSayisi));
+                        foreach (var cocukKitabi in cocukKitabiList)
+                        {
+                            if (id != cocukKitabi.id)
+                            {
+                                cocukKitabiList.Add(new CocukKitabi(id, kitapAdi!, yazar!, yayinEvi!, sayfaSayisi));
+                            }
+                            else
+                            {
+                                Console.WriteLine("Bu ID'ye sahip bir kitap zaten mevcut.");
+                            }
+                        }
                     }
                     catch (Exception ex)
                     {
